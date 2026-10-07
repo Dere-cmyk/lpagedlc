@@ -1,0 +1,741 @@
+/* ==========================================================
+   Landing Experto en E-commerce · UCB Tarija
+   Móvil primero (360 a 430 px). El escritorio es una adaptación.
+   ========================================================== */
+
+/* ---------- Colores y medidas base ----------
+   Los dos valores de marca (azul y amarillo) viven solo aquí.
+   Son aproximaciones a los Pantone 541 y 116: se cambian por los oficiales en este lugar. */
+:root {
+  --azul: #003C71;
+  --amarillo: #FFCD00;
+
+  --texto: #1F1F1F;
+  --texto-secundario: #5E5E5E;
+  --gris-claro: #F2F2F2;
+  --blanco: #FFFFFF;
+
+  /* Texto atenuado sobre azul */
+  --texto-suave-sobre-azul: #D9E2EC;
+
+  /* Filetes finos */
+  --filete-sobre-claro: #CFCFCF;
+  --filete-sobre-azul: rgba(255, 255, 255, 0.28);
+
+  --fuente-titulos: "Alegreya", "Georgia", serif;
+  --fuente-texto: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+
+  --margen-lateral: 1.25rem;
+  --espacio-seccion: 3rem;
+  --ancho-maximo: 68rem;
+  --ancho-lectura: 38rem;
+}
+
+/* ---------- Reinicio mínimo ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--azul) var(--gris-claro);
+}
+
+body {
+  margin: 0;
+  background: var(--blanco);
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, p, ul, ol, dl, dd, figure {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+/* El texto seleccionado usa los colores de la marca */
+::selection {
+  background: var(--amarillo);
+  color: var(--azul);
+}
+
+/* Evita que "e-commerce" se corte en el guion */
+.sin-corte {
+  white-space: nowrap;
+}
+
+/* ---------- Estructura de secciones ---------- */
+.seccion {
+  padding: var(--espacio-seccion) var(--margen-lateral);
+}
+
+.seccion__contenido {
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+}
+
+.seccion--blanca {
+  background: var(--blanco);
+  color: var(--texto);
+}
+
+.seccion--gris-claro {
+  background: var(--gris-claro);
+  color: var(--texto);
+}
+
+.seccion--azul {
+  background: var(--azul);
+  color: var(--blanco);
+}
+
+/* Dos secciones del mismo fondo seguidas: un filete fino las separa */
+.seccion--con-filete {
+  padding-top: 0;
+}
+
+.seccion--con-filete .seccion__contenido {
+  border-top: 1px solid var(--filete-sobre-claro);
+  padding-top: var(--espacio-seccion);
+}
+
+.seccion--azul.seccion--con-filete .seccion__contenido {
+  border-top-color: var(--filete-sobre-azul);
+}
+
+.seccion__titulo {
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 6.4vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  max-width: 22ch;
+}
+
+.seccion__cuerpo {
+  margin-top: 1.5rem;
+  max-width: var(--ancho-lectura);
+}
+
+.nota {
+  margin-top: 1.25rem;
+  color: var(--texto-secundario);
+  font-size: 1rem;
+}
+
+/* ==========================================================
+   1. Primera pantalla
+   Mide lo que mide su contenido: no se estira a la altura del celular.
+   ========================================================== */
+.primera-pantalla {
+  background: var(--azul);
+  color: var(--blanco);
+}
+
+.primera-pantalla__contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+  width: 100%;
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+  padding: 1rem var(--margen-lateral) var(--espacio-seccion);
+}
+
+.primera-pantalla__retrato {
+  display: none;
+}
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.encabezado__logo {
+  width: auto;
+  height: 2.25rem;
+}
+
+.encabezado__sede {
+  font-size: 0.9375rem;
+  color: var(--texto-suave-sobre-azul);
+  text-align: right;
+}
+
+.presentacion__titular {
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 8.8vw, 3.6rem);
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* El énfasis va con peso, no con cursiva */
+.presentacion__titular em {
+  font-style: normal;
+  font-weight: 700;
+}
+
+.presentacion__apoyo {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--texto-suave-sobre-azul);
+  max-width: 34rem;
+}
+
+/* ---------- Fila del docente: cara y nombre pegados al titular ---------- */
+.docente-fila {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.docente-fila__rostro {
+  flex: none;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.docente-fila__nombre {
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  font-size: 1.375rem;
+  line-height: 1.15;
+}
+
+.docente-fila__cargo {
+  margin-top: 0.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.35;
+  color: var(--texto-suave-sobre-azul);
+}
+
+/* ---------- Bloque de oferta: precio, datos, botón y fecha como una unidad ---------- */
+.oferta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  max-width: 34rem;
+}
+
+.oferta__resumen {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--filete-sobre-azul);
+}
+
+/* El precio es el dato que más pesa */
+.oferta__precio {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 2.75rem;
+  line-height: 1;
+  color: var(--amarillo);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.oferta__datos {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--blanco);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ningún dato de la oferta se parte en dos líneas */
+.oferta__datos li {
+  white-space: nowrap;
+}
+
+/* Líneas de fecha: cada una es un elemento aparte y van en blanco */
+.oferta__fechas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.oferta__fecha {
+  color: var(--blanco);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+}
+
+.oferta__conteo {
+  color: var(--texto-suave-sobre-azul);
+  font-size: 0.9375rem;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Botón de WhatsApp ---------- */
+.boton-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--amarillo);
+  color: var(--azul);
+  border-radius: 4px;
+  font-family: var(--fuente-texto);
+  font-size: clamp(1rem, 4.8vw, 1.125rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 120ms ease-out, background-color 120ms ease-out;
+}
+
+.boton-whatsapp:hover {
+  background: #FFD633;
+}
+
+.boton-whatsapp:active {
+  transform: translateY(1px);
+  background: #F0C000;
+}
+
+.boton-whatsapp:focus-visible {
+  outline: 3px solid var(--blanco);
+  outline-offset: 3px;
+}
+
+.boton-whatsapp__icono {
+  flex: none;
+}
+
+/* ==========================================================
+   2. Para quién es
+   ========================================================== */
+.lista-situaciones li {
+  padding: 1rem 0;
+  border-top: 1px solid var(--filete-sobre-claro);
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  font-size: 1.375rem;
+  line-height: 1.3;
+}
+
+.lista-situaciones li:last-child {
+  border-bottom: 1px solid var(--filete-sobre-claro);
+}
+
+.dato-contexto {
+  margin-top: 1.5rem;
+  max-width: 30rem;
+}
+
+.dato-contexto strong {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.dato-contexto__fuente {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.9375rem;
+  color: var(--texto-secundario);
+}
+
+/* ==========================================================
+   3. Tu docente
+   ========================================================== */
+.docente {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* El retrato va alineado a la izquierda, igual que el texto */
+.docente__retrato {
+  width: 100%;
+  max-width: 20rem;
+  margin-left: 0;
+}
+
+.docente__cargo {
+  margin-top: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.lista-trayectoria {
+  margin-top: 1rem;
+  max-width: var(--ancho-lectura);
+}
+
+.lista-trayectoria li {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--filete-sobre-claro);
+}
+
+.equipo {
+  margin-top: 2rem;
+}
+
+.equipo__foto {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.equipo__pie {
+  margin-top: 0.625rem;
+  font-size: 0.9375rem;
+  color: var(--texto-secundario);
+}
+
+/* ==========================================================
+   4. Qué te llevas y temario
+   ========================================================== */
+.introduccion {
+  font-size: 1.125rem;
+}
+
+/* Entregables: numeral grande y sin líneas, para cambiar el patrón */
+.lista-entregables {
+  margin-top: 0.75rem;
+  counter-reset: entregable;
+}
+
+.lista-entregables li {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  align-items: baseline;
+  padding: 0.625rem 0;
+  font-weight: 600;
+  counter-increment: entregable;
+}
+
+.lista-entregables li::before {
+  content: counter(entregable);
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.subtitulo {
+  margin-top: 2rem;
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  font-size: 1.625rem;
+  line-height: 1.15;
+}
+
+.temario {
+  margin-top: 0.75rem;
+  counter-reset: tema;
+}
+
+.temario li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  padding: 0.375rem 0;
+  counter-increment: tema;
+}
+
+.temario li::before {
+  content: counter(tema);
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  color: var(--texto-secundario);
+}
+
+/* ==========================================================
+   5. Datos prácticos
+   ========================================================== */
+.datos-practicos__fila {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--filete-sobre-claro);
+}
+
+/* La última fila no lleva filete ni relleno abajo: la sección ya deja su propio espacio */
+.datos-practicos__fila:last-child {
+  padding-bottom: 0;
+}
+
+.datos-practicos dt {
+  color: var(--texto-secundario);
+  font-size: 1rem;
+}
+
+.datos-practicos dd {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* El precio va al doble de tamaño o más que el resto */
+.datos-practicos__precio {
+  font-family: var(--fuente-titulos);
+  font-size: 3.5rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* ==========================================================
+   6. Certificado (bloque azul)
+   ========================================================== */
+.certificado__marcas {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.certificado__escudo {
+  width: 5rem;
+  height: auto;
+}
+
+.certificado__logo {
+  width: 8.75rem;
+  height: auto;
+}
+
+.certificado__texto {
+  font-size: 1.0625rem;
+  color: var(--texto-suave-sobre-azul);
+}
+
+.certificado__linea {
+  margin-top: 1.25rem;
+  font-family: var(--fuente-titulos);
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* ==========================================================
+   7. Cierre
+   ========================================================== */
+/* En el celular los tres datos van uno debajo de otro; en pantallas anchas, en una línea con puntos */
+.cierre__texto {
+  font-size: 1.125rem;
+  color: var(--texto-suave-sobre-azul);
+}
+
+.cierre__dato {
+  display: block;
+}
+
+.cierre .boton-whatsapp {
+  margin-top: 1.25rem;
+}
+
+.cierre .oferta__fechas {
+  margin-top: 0.875rem;
+}
+
+/* ==========================================================
+   8. Pie
+   ========================================================== */
+.pie {
+  background: var(--azul);
+  color: var(--texto-suave-sobre-azul);
+  padding: 1.5rem var(--margen-lateral) calc(1.5rem + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--filete-sobre-azul);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.pie__contenido {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+}
+
+.pie__escudo {
+  flex: none;
+  width: 3rem;
+  height: auto;
+}
+
+.pie__aviso {
+  margin-top: 0.75rem;
+  color: var(--blanco);
+}
+
+/* ==========================================================
+   Barra fija inferior
+   ========================================================== */
+.barra-fija {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 0.75rem var(--margen-lateral) calc(0.75rem + env(safe-area-inset-bottom));
+  background: var(--azul);
+  border-top: 1px solid var(--filete-sobre-azul);
+  box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.18);
+  transform: translateY(110%);
+  visibility: hidden;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 260ms;
+}
+
+.barra-fija--visible {
+  transform: translateY(0);
+  visibility: visible;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s;
+}
+
+.barra-fija .boton-whatsapp {
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+/* ==========================================================
+   Pantallas medianas: el texto del cierre pasa a una sola línea
+   ========================================================== */
+@media (min-width: 600px) {
+  .cierre__dato {
+    display: inline;
+  }
+
+  .cierre__dato + .cierre__dato::before {
+    content: " · ";
+  }
+}
+
+/* ==========================================================
+   Escritorio: adaptación a partir de 900 px
+   ========================================================== */
+@media (min-width: 900px) {
+  :root {
+    --espacio-seccion: 4rem;
+  }
+
+  body {
+    font-size: 1.125rem;
+  }
+
+  /* Título a la izquierda, contenido a la derecha */
+  .seccion__contenido > .seccion__titulo {
+    float: left;
+    width: 32%;
+  }
+
+  .seccion__contenido > .seccion__cuerpo {
+    margin-top: 0;
+    margin-left: 38%;
+    max-width: var(--ancho-lectura);
+  }
+
+  .seccion__contenido::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  /* Primera pantalla en dos columnas: texto y retrato grande */
+  .primera-pantalla {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+
+  .primera-pantalla__contenido {
+    justify-content: center;
+    max-width: none;
+    gap: 1.5rem;
+    padding: 2rem 3rem 3rem max(2.5rem, calc((100vw - var(--ancho-maximo)) / 2));
+  }
+
+  .primera-pantalla__retrato {
+    display: block;
+    background: var(--gris-claro) url("assets/luis-canedo.jpg") no-repeat left bottom / contain;
+  }
+
+  .encabezado__logo {
+    height: 2.75rem;
+  }
+
+  .presentacion__titular {
+    font-size: clamp(3rem, 4.6vw, 4.5rem);
+  }
+
+  .docente {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .docente__retrato {
+    width: 40%;
+  }
+
+  .docente__texto .seccion__titulo {
+    float: none;
+    width: auto;
+  }
+
+  .lista-situaciones li {
+    font-size: 1.5rem;
+  }
+
+  .certificado__marcas {
+    float: left;
+    width: 32%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0;
+  }
+
+  .seccion__contenido > .certificado__marcas + .seccion__titulo {
+    float: none;
+    width: auto;
+    margin-left: 38%;
+  }
+
+  .seccion__contenido > .certificado__marcas ~ .seccion__cuerpo {
+    margin-top: 1.5rem;
+  }
+}
+
+/* ==========================================================
+   Preferencias del usuario
+   ========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .boton-whatsapp,
+  .barra-fija,
+  .barra-fija--visible {
+    transition: none;
+  }
+}
