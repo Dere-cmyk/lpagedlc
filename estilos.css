@@ -500,12 +500,44 @@ ul, ol {
   font-variant-numeric: tabular-nums;
 }
 
-/* El precio va al doble de tamaño o más que el resto */
-.datos-practicos__precio {
+/* ---------- El gesto de la página: el precio a escala extrema ----------
+   La cifra es tan grande que en celular el borde de la pantalla le come un poco
+   del último cero. Es la única vez que la página rompe su propia escala. */
+.seccion--precio {
+  overflow-x: clip;
+}
+
+.datos-practicos__fila--precio {
+  display: block;
+  padding-top: 0.75rem;
+}
+
+.precio-gigante {
+  position: relative;
+  display: block;
+  margin-top: 0.25rem;
   font-family: var(--fuente-titulos);
-  font-size: 3.5rem;
-  line-height: 1;
   font-weight: 700;
+  color: var(--azul);
+  font-variant-numeric: lining-nums;
+}
+
+.precio-gigante__cifra {
+  display: block;
+  margin-left: -0.04em;
+  font-size: 78vw;
+  line-height: 0.66;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+/* "Bs" queda metido arriba a la derecha, sobre el cero, que es bajo */
+.precio-gigante__moneda {
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  font-size: 2.25rem;
+  line-height: 1;
 }
 
 /* ==========================================================
@@ -530,7 +562,6 @@ ul, ol {
 
 .certificado__texto {
   font-size: 1.0625rem;
-  color: var(--texto-suave-sobre-azul);
 }
 
 .certificado__linea {
@@ -545,6 +576,17 @@ ul, ol {
    7. Cierre
    ========================================================== */
 /* En el celular los tres datos van uno debajo de otro; en pantallas anchas, en una línea con puntos */
+/* El cierre es el único bloque azul fuerte antes del pie: su título sube de escala */
+.cierre {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.cierre .seccion__titulo {
+  font-size: clamp(2.25rem, 9.5vw, 3.5rem);
+  line-height: 1.06;
+}
+
 .cierre__texto {
   font-size: 1.125rem;
   color: var(--texto-suave-sobre-azul);
@@ -588,9 +630,10 @@ ul, ol {
   height: auto;
 }
 
+/* El aviso académico es necesario pero no debe competir con el cierre */
 .pie__aviso {
   margin-top: 0.75rem;
-  color: var(--blanco);
+  color: var(--texto-suave-sobre-azul);
 }
 
 /* ==========================================================
@@ -626,6 +669,11 @@ ul, ol {
    Pantallas medianas: el texto del cierre pasa a una sola línea
    ========================================================== */
 @media (min-width: 600px) {
+  /* Con más ancho el precio ya no se recorta: llega a un tamaño fijo */
+  .precio-gigante__cifra {
+    font-size: 13rem;
+  }
+
   .cierre__dato {
     display: inline;
   }
