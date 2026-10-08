@@ -32,11 +32,14 @@
     <div class="primera-pantalla__contenido">
 
       <div class="encabezado">
-        <img class="encabezado__logo" src="assets/logo-ucb-blanco.png" width="549" height="191" alt="UCB, Universidad Católica Boliviana">
+        <!-- PRUEBA: el logo es un botón que cambia el titular. Quitar el botón antes de publicar. -->
+        <button class="encabezado__boton-logo" id="boton-cambiar-titular" type="button" aria-label="Cambiar el titular (prueba de titulares)">
+          <img class="encabezado__logo" src="assets/logo-ucb-blanco.png" width="549" height="191" alt="UCB, Universidad Católica Boliviana">
+        </button>
         <p class="encabezado__sede">Sede Tarija</p>
       </div>
 
-      <h1 class="presentacion__titular">En 2 semanas, diseña la <em>operación completa</em> de tu tienda online</h1>
+      <h1 class="presentacion__titular" id="titular-principal" aria-live="polite">En 2 semanas, diseña la <em>operación completa</em> de tu tienda online</h1>
 
       <p class="presentacion__credencial">Más de 19 años de experiencia y 6 millones de transacciones</p>
 
@@ -69,18 +72,18 @@
   <main>
 
     <!-- 2. Para quién es -->
-    <section class="seccion seccion--blanca" aria-labelledby="titulo-publico">
+    <section class="seccion seccion--gris-claro seccion--problemas" aria-labelledby="titulo-publico">
       <div class="seccion__contenido">
-        <h2 class="seccion__titulo" id="titulo-publico">Si vendes así, este curso es para ti</h2>
+        <p class="publico-intro">Para negocios que ya venden por redes o WhatsApp y quieren dejar de hacerlo todo a mano.</p>
+
+        <h2 class="seccion__titulo" id="titulo-publico">Ya basta de:</h2>
 
         <div class="seccion__cuerpo">
-          <p class="publico-intro">Para negocios que ya venden por redes o WhatsApp y quieren dejar de hacerlo todo a mano.</p>
-
           <ul class="lista-situaciones">
-            <li>Tomas los pedidos por WhatsApp o Instagram y los anotas a mano.</li>
-            <li>Cobras por QR y después revisas uno por uno quién pagó.</li>
-            <li>Coordinas cada entrega por mensaje.</li>
-            <li>Quieres vender más, pero ya no te alcanza el tiempo.</li>
+            <li>Tomar los pedidos por WhatsApp o Instagram y anotarlos a mano.</li>
+            <li>Cobrar por QR y después revisar uno por uno quién pagó.</li>
+            <li>Coordinar cada entrega por mensaje.</li>
+            <li>Quedarte sin tiempo para vender más.</li>
           </ul>
 
           <p class="nota">No necesitas título profesional para inscribirte.</p>
@@ -92,13 +95,8 @@
     </section>
 
     <!-- 3. Tu docente -->
-    <section class="seccion seccion--gris-claro" aria-labelledby="titulo-docente">
+    <section class="seccion seccion--gris-claro seccion--con-filete seccion--docente" aria-labelledby="titulo-docente">
       <div class="seccion__contenido">
-        <figure class="equipo">
-          <img class="equipo__foto" src="assets/equipo-goja.jpg" srcset="assets/equipo-goja-800.jpg 800w, assets/equipo-goja.jpg 1280w" sizes="(min-width: 900px) 1088px, calc(100vw - 3rem)" width="1280" height="720" loading="lazy" alt="El equipo de GOJA posa en un jardín detrás de letras grandes que forman la palabra GOJA">
-          <figcaption class="equipo__pie">El equipo de GOJA, la empresa de e-commerce que Luis cofundó.</figcaption>
-        </figure>
-
         <div class="docente">
           <div class="docente__cabecera">
             <img class="docente__retrato" src="assets/luis-canedo.jpg" width="800" height="805" loading="lazy" alt="Luis Canedo Arze, docente del curso">
@@ -110,11 +108,16 @@
           </div>
 
           <ul class="lista-trayectoria">
-            <li>Cofundó GOJA, empresa de <span class="sin-corte">e-commerce</span> con operación en Bolivia y Estados Unidos.</li>
             <li class="trayectoria__destacada"><strong class="trayectoria__cifra"><span class="trayectoria__prefijo">Más de</span> 19 años</strong> en operaciones de <span class="sin-corte">e-commerce</span>, procesamiento de pedidos y logística.</li>
-            <li>Maestría en Gestión de Tecnologías de la Información (University of Salford, Reino Unido) e Ingeniero en Telecomunicaciones (UCB).</li>
+            <li>Cofundó GOJA, empresa de <span class="sin-corte">e-commerce</span> con operación en Bolivia y Estados Unidos, con <strong class="trayectoria__dato">más de 6 millones de transacciones</strong>.</li>
+            <li>Ingeniero en Telecomunicaciones (UCB).</li>
           </ul>
         </div>
+
+        <figure class="equipo">
+          <img class="equipo__foto" src="assets/equipo-goja.jpg" srcset="assets/equipo-goja-800.jpg 800w, assets/equipo-goja.jpg 1280w" sizes="(min-width: 900px) 1088px, calc(100vw - 3rem)" width="1280" height="720" loading="lazy" alt="El equipo de GOJA posa en un jardín detrás de letras grandes que forman la palabra GOJA">
+          <figcaption class="equipo__pie">El equipo de GOJA</figcaption>
+        </figure>
       </div>
     </section>
 
