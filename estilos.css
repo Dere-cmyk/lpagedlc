@@ -200,8 +200,9 @@ ul, ol {
   text-wrap: balance;
   /* En celular la frase principal va centrada; en escritorio vuelve a la izquierda */
   text-align: center;
-  /* Más aire entre el encabezado (logo y sede) y la frase principal */
-  margin-top: 1.75rem;
+  /* Más aire entre el encabezado (logo y sede) y la frase principal:
+     92 px en total (18 px del gap del hero + 74 px de margen), el doble de lo que había */
+  margin-top: 4.625rem;
 }
 
 /* El énfasis va con peso, no con cursiva */
