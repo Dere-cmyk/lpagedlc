@@ -279,9 +279,15 @@ ul, ol {
   color: var(--blanco);
 }
 
-/* ---------- Credencial bajo el titular: experiencia y volumen, sin foto ni nombre ---------- */
+/* Cada línea de la credencial va aparte y sin partirse a mitad de frase */
+.presentacion__credencial-linea {
+  display: block;
+}
+
+/* ---------- Credencial bajo el titular: docente, experiencia y volumen ---------- */
 .presentacion__credencial {
-  font-size: 1rem;
+  /* 15 px es el mínimo; crece hasta 16 px para que cada frase quepa en una línea desde 360 px */
+  font-size: clamp(0.9375rem, 4.3vw, 1rem);
   font-weight: 700;
   line-height: 1.35;
   color: var(--texto-suave-sobre-marino);
