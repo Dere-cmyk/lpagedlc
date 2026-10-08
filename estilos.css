@@ -229,8 +229,9 @@ ul, ol {
   flex-direction: column;
   gap: 0.875rem;
   max-width: 34rem;
-  /* Espacio entre la frase del hero y la línea divisora que abre el bloque del precio */
-  margin-top: 1.5rem;
+  /* Espacio entre la credencial y el bloque del precio: 84 px en total
+     (18 px del gap del hero + 66 px de margen), el doble de lo que había */
+  margin-top: 4.125rem;
 }
 
 .oferta__resumen {
