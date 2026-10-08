@@ -213,7 +213,42 @@ function activarBarraFija() {
 }
 
 
+// ---------- Prueba de titulares ----------
+// PRUEBA: el logo cambia el titular entre estas tres opciones. Quitar antes de publicar.
+
+var titularesDePrueba = [
+  "En 2 semanas, diseña la <em>operación completa</em> de tu tienda online",
+  "En 2 semanas, deja de hacer envíos y pedidos a mano",
+  "En 2 semanas, tendrás tu negocio abierto las 24 horas"
+];
+
+var posicionTitularActual = 0;
+
+// Pasa al siguiente titular y vuelve al primero cuando se acaban
+function cambiarTitular() {
+  posicionTitularActual = posicionTitularActual + 1;
+
+  if (posicionTitularActual >= titularesDePrueba.length) {
+    posicionTitularActual = 0;
+  }
+
+  var titular = document.getElementById("titular-principal");
+  titular.innerHTML = titularesDePrueba[posicionTitularActual];
+}
+
+function activarCambioDeTitular() {
+  var botonLogo = document.getElementById("boton-cambiar-titular");
+  var titular = document.getElementById("titular-principal");
+
+  // Muestra el primer titular al cargar la página
+  titular.innerHTML = titularesDePrueba[posicionTitularActual];
+
+  botonLogo.addEventListener("click", cambiarTitular);
+}
+
+
 // ---------- Arranque ----------
 actualizarOferta();
 activarRegistroDeToques();
 activarBarraFija();
+activarCambioDeTitular();
